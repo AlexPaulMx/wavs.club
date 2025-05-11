@@ -1,5 +1,11 @@
+'use client'
+
 import React from 'react'
-import MusicNFT from './components/MusicNFT'
+import dynamic from 'next/dynamic'
+
+const MusicNFT = dynamic(() => import('./components/MusicNFT'), {
+  ssr: false
+})
 
 export default function Home() {
   return (

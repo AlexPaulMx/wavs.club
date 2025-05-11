@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
-import MusicNFT from '../../artifacts/contracts/MusicNFT.sol/MusicNFT.json';
+import { Web3Provider } from '@ethersproject/providers';
+import { MusicNFT__factory } from '../contracts/typechain-types';
 
 interface SongMetadata {
   title: string;
@@ -15,6 +16,8 @@ export default function MusicNFTComponent() {
   const [account, setAccount] = useState<string>('');
   const [metadata, setMetadata] = useState<SongMetadata | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string>('');
+  const [isMinted, setIsMinted] = useState(false);
 
   // Dirección del contrato NFT desplegado en Base
   const contractAddress = "0xFbae28C67F155a38f75fce5C247AbA69065a69BF";
