@@ -1,3 +1,4 @@
+import React from 'react'
 import MusicNFT from './components/MusicNFT'
 
 export default function Home() {
